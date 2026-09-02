@@ -1,0 +1,5 @@
+modo, particao, W, L, tempo_total, tempo_max_filho, tempo_min_filho, tempo_agregacao
+thread, bloco, 2, 6999972080, 8.14e+02, 8.14e+02, 7.98e+02, 1.16e-07
+thread, ciclico, 8, 6999972080, 6.27e+02, 6.27e+02, 2.65e+02, 2.85e-07
+thread, ciclico, 8, 6999972080, 2.82e+02, 2.82e+02, 1.28e+02, 2.25e-07
+thread, ciclico, 8, 7899972080, 3.75e+02, 3.75e+02, 1.33e+02, 7.10e-08
