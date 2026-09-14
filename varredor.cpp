@@ -37,7 +37,7 @@ void processar_bloco(uint64_t inicio, uint64_t fim, DadosResultado& res) {
     }
 
     auto t_fim = chrono::high_resolution_clock::now();
-    res.tempo_execucao = chrono::duration<double>(t_fim - t_inicio).count();
+    res.tempo_execucao = chrono::duration<double, std::milli>(t_fim - t_inicio).count();
     res.total_passos = soma_passos;
 }
 
@@ -55,7 +55,7 @@ void processar_ciclico(uint64_t A, uint64_t B, int id_worker, int num_workers, D
     }
 
     auto t_fim = chrono::high_resolution_clock::now();
-    res.tempo_execucao = chrono::duration<double>(t_fim - t_inicio).count();
+    res.tempo_execucao = chrono::duration<double, std::milli>(t_fim - t_inicio).count();
     res.total_passos = soma_passos;
 }
 
@@ -127,7 +127,7 @@ int main(int argc, char* argv[]) {
             total_passos_global = soma;
 
             auto t_fim_agregacao = chrono::high_resolution_clock::now();
-            tempo_agregacao = chrono::duration<double>(t_fim_agregacao - t_fim_filhos).count();
+            tempo_agregacao = chrono::duration<double, std::milli>(t_fim_agregacao - t_fim_filhos).count();
 
         } else if (modo == "processo") {
             for (int w = 0; w < W; ++w) {
@@ -176,12 +176,12 @@ int main(int argc, char* argv[]) {
             total_passos_global = soma;
 
             auto t_fim_agregacao = chrono::high_resolution_clock::now();
-            tempo_agregacao = chrono::duration<double>(t_fim_agregacao - t_fim_filhos).count();
+            tempo_agregacao = chrono::duration<double, std::milli>(t_fim_agregacao - t_fim_filhos).count();
         }
     }
 
     auto t_fim_total = chrono::high_resolution_clock::now();
-    double tempo_total = chrono::duration<double>(t_fim_total - t_inicio_pai).count();
+    double tempo_total = chrono::duration<double, std::milli>(t_fim_total - t_inicio_pai).count();
 
     string linha_saida = modo + ", " +
                               particao + ", " +
@@ -207,7 +207,7 @@ int main(int argc, char* argv[]) {
         arq.close();
     }
 
-    cout <<"[CHECKPOINT - Soma dos passos de Collatz]: "<< total_passos_global << endl;
+    cout <<"Soma dos passos:"<< total_passos_global << endl;
 
     return 0;
 }
